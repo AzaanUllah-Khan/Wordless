@@ -99,8 +99,8 @@ main .game .count{
 }
 
 main .game .count button{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     font-size: 30px;
     cursor: pointer;
     border: none;
@@ -113,6 +113,17 @@ main .game .count button{
 main .game .count button:disabled{
     background-color: #434445;
     color: #818283;
+}
+main .game .count input{
+    border: 2px solid #303436;
+    outline: none;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    padding-left: 10px;
+    background-color: transparent;
+    font-size: 24px;
+    color: #ECECEC;
 }
 
 @media screen and (max-width: 1000px) {
