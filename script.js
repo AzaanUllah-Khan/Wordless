@@ -3,6 +3,7 @@ let DecBtn = document.getElementById('dec')
 let input = document.getElementById('inp')
 let num = 3
 input.value = num
+let sound = new Audio("add.mp3")
 
 function check(){
     if(num == 6){
@@ -19,9 +20,11 @@ function increase() {
     num = num + 1
     input.value = num
     check()
+    sound.play()
 }
 function decrease() {
     num = num - 1
     input.value = num
     check()
+    sound.play()
 }
