@@ -82,6 +82,15 @@ header nav .gp2 i:hover {
     background-color: #939b9f15;
 }
 
+main, main .game{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 @media screen and (max-width: 1000px) {
     header nav h1 {
         font-size: 3.5rem;
