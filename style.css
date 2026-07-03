@@ -91,6 +91,30 @@ main, main .game{
     gap: 15px;
 }
 
+main .game .count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+main .game .count button{
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #707070;
+    color: #ECECEC;
+}
+
+main .game .count button:disabled{
+    background-color: #434445;
+    color: #818283;
+}
+
 @media screen and (max-width: 1000px) {
     header nav h1 {
         font-size: 3.5rem;
