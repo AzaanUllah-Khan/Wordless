@@ -81,14 +81,17 @@ header nav .gp2 p:hover {
 header nav .gp2 i:hover {
     background-color: #939b9f15;
 }
-
-main, main .game{
+main{
+    margin-top: 50px;
+    width: 100%;
+}
+main .game{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 main .game .count{
@@ -126,7 +129,25 @@ main .game .count input{
     color: #ECECEC;
     text-align: center;
 }
-
+main .game .tries{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+main .game .tries .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+main .game .tries .row div{
+    width: 40px;
+    height: 40px;
+    background-color: #303436;
+    border-radius: 7px;
+}
 @media screen and (max-width: 1000px) {
     header nav h1 {
         font-size: 3.5rem;
