@@ -3,6 +3,8 @@ let DecBtn = document.getElementById('dec')
 let input = document.getElementById('inp')
 let rows = document.getElementsByClassName('row')
 let num = 3
+let currKeyCount = 0
+let allKeyCount = num*6
 input.value = num
 let sound = new Audio("add.mp3")
 
@@ -20,6 +22,7 @@ function check(){
 function increase() {
     num = num + 1
     input.value = num
+    allKeyCount = num*6
     check()
     addBoxes()
     sound.play()
@@ -27,6 +30,7 @@ function increase() {
 function decrease() {
     num = num - 1
     input.value = num
+    allKeyCount = num*6
     check()
     removeBoxes()
     sound.play()
@@ -44,3 +48,20 @@ function removeBoxes(){
         rows[i].removeChild(child)
     }
 }
+window.addEventListener("keydown",((e)=>{
+    if(e.key == "Backspace"){
+        currKeyCount>0?currKeyCount=currKeyCount-1:currKeyCount=0
+        console.log(currKeyCount);
+    }else{
+        currKeyCount=currKeyCount+1
+        console.log(currKeyCount);
+    }
+    if(currKeyCount>0){
+        IncBtn.setAttribute("disabled",true)
+        DecBtn.setAttribute("disabled",true)
+    }else if(currKeyCount==0){
+        IncBtn.removeAttribute("disabled")
+        DecBtn.removeAttribute("disabled")
+        check()
+    }
+}))
