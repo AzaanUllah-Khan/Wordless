@@ -7,6 +7,7 @@ let num = 3
 let currKeyCount = 0
 let allKeyCount = num * 6
 let wordBank = []
+let word = "cat"
 input.value = num
 let sound = new Audio("add.mp3")
 let type = new Audio("type.wav")
@@ -24,7 +25,7 @@ async function selectRandomWord(){
         }else if(num ==6){
             wordBank = data["six"]
         }
-        console.log(wordBank);
+        word = wordBank[Math.ceil(Math.random()*wordBank.length)]
     } catch (error) {
         console.log(error);
     }
