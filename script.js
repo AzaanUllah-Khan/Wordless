@@ -6,10 +6,30 @@ let letterBoxes = document.getElementsByClassName('letter')
 let num = 3
 let currKeyCount = 0
 let allKeyCount = num * 6
+let wordBank = []
 input.value = num
 let sound = new Audio("add.mp3")
 let type = new Audio("type.wav")
 
+async function selectRandomWord(){
+    try {
+        const response = await fetch('./words.json')
+        const data = await response.json()
+        if(num == 3){
+            wordBank = data["three"]
+        }else if(num ==4){
+            wordBank = data["four"]
+        }else if(num ==5){
+            wordBank = data["five"]
+        }else if(num ==6){
+            wordBank = data["six"]
+        }
+        console.log(wordBank);
+    } catch (error) {
+        console.log(error);
+    }
+}
+selectRandomWord()
 function check() {
     if (num == 6) {
         IncBtn.setAttribute("disabled", true)
@@ -28,7 +48,7 @@ function increase() {
     check()
     addBoxes()
     sound.play()
-    console.log(letterBoxes);
+    selectRandomWord()
 }
 function decrease() {
     num = num - 1
@@ -37,6 +57,7 @@ function decrease() {
     check()
     removeBoxes()
     sound.play()
+    selectRandomWord()
 }
 function addBoxes() {
     for (i = 0; i < rows.length; i++) {
