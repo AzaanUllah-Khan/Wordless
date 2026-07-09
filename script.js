@@ -8,6 +8,7 @@ let currKeyCount = 0
 let allKeyCount = num * 6
 input.value = num
 let sound = new Audio("add.mp3")
+let type = new Audio("type.wav")
 
 function check() {
     if (num == 6) {
@@ -58,6 +59,7 @@ window.addEventListener("keydown", ((e) => {
             letterBoxes[currKeyCount].style.animation = 'none';
             letterBoxes[currKeyCount].offsetHeight;
             letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
+            type.play()
         } else {
             currKeyCount = 0
         }
@@ -68,6 +70,7 @@ window.addEventListener("keydown", ((e) => {
             letterBoxes[currKeyCount - 1].style.animation = 'none';
             letterBoxes[currKeyCount - 1].offsetHeight;
             letterBoxes[currKeyCount - 1].style.animation = 'pop 0.3s ease-out';
+            type.play()
         }
     }
     if (currKeyCount > 0) {
