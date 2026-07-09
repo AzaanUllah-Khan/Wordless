@@ -55,13 +55,19 @@ window.addEventListener("keydown", ((e) => {
         if (currKeyCount > 0) {
             currKeyCount = currKeyCount - 1
             letterBoxes[currKeyCount].innerHTML = " "
-        }else{
+            letterBoxes[currKeyCount].style.animation = 'none';
+            letterBoxes[currKeyCount].offsetHeight;
+            letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
+        } else {
             currKeyCount = 0
         }
     } else if (e.key == "a" || e.key == "b" || e.key == "c" || e.key == "d" || e.key == "e" || e.key == "f" || e.key == "g" || e.key == "h" || e.key == "i" || e.key == "j" || e.key == "k" || e.key == "l" || e.key == "m" || e.key == "n" || e.key == "o" || e.key == "p" || e.key == "q" || e.key == "r" || e.key == "s" || e.key == "t" || e.key == "u" || e.key == "v" || e.key == "w" || e.key == "x" || e.key == "y" || e.key == "z") {
         if (currKeyCount < allKeyCount) {
             currKeyCount = currKeyCount + 1
             letterBoxes[currKeyCount - 1].innerHTML = e.key
+            letterBoxes[currKeyCount - 1].style.animation = 'none';
+            letterBoxes[currKeyCount - 1].offsetHeight;
+            letterBoxes[currKeyCount - 1].style.animation = 'pop 0.3s ease-out';
         }
     }
     if (currKeyCount > 0) {
