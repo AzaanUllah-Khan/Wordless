@@ -52,7 +52,12 @@ function removeBoxes() {
 }
 window.addEventListener("keydown", ((e) => {
     if (e.key == "Backspace") {
-        currKeyCount > 0 ? currKeyCount = currKeyCount - 1 : currKeyCount = 0
+        if (currKeyCount > 0) {
+            currKeyCount = currKeyCount - 1
+            letterBoxes[currKeyCount].innerHTML = " "
+        }else{
+            currKeyCount = 0
+        }
     } else if (e.key == "a" || e.key == "b" || e.key == "c" || e.key == "d" || e.key == "e" || e.key == "f" || e.key == "g" || e.key == "h" || e.key == "i" || e.key == "j" || e.key == "k" || e.key == "l" || e.key == "m" || e.key == "n" || e.key == "o" || e.key == "p" || e.key == "q" || e.key == "r" || e.key == "s" || e.key == "t" || e.key == "u" || e.key == "v" || e.key == "w" || e.key == "x" || e.key == "y" || e.key == "z") {
         if (currKeyCount < allKeyCount) {
             currKeyCount = currKeyCount + 1
