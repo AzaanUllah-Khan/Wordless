@@ -154,6 +154,15 @@ main .game .tries .row div{
     justify-content: center;
     font-size: 24px;
 }
+main .game .tries .row div.wrong{
+    background-color: #707070;
+}
+main .game .tries .row div.rightwrong{
+    background-color: #DAC316;
+}
+main .game .tries .row div.right{
+    background-color: #55B725;
+}
 @media screen and (max-width: 1000px) {
     header nav h1 {
         font-size: 3.5rem;
