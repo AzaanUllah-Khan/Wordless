@@ -81,11 +81,13 @@ header nav .gp2 p:hover {
 header nav .gp2 i:hover {
     background-color: #939b9f15;
 }
-main{
+
+main {
     margin-top: 50px;
     width: 100%;
 }
-main .game{
+
+main .game {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -94,14 +96,43 @@ main .game{
     gap: 20px;
 }
 
-main .game .count{
+main .game .down {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main .game .reset {
+    flex: 1;
+}
+
+main .game .reset button {
+    border: 2px solid #303436;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 12px;
+    background-color: transparent;
+    font-size: 20px;
+    color: #ECECEC;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    transition: all ease-in-out 0.2s
+}
+
+main .game .reset button:hover {
+    background-color: #939b9f15;
+}
+
+main .game .count {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
+    flex: 1;
 }
 
-main .game .count button{
+main .game .count button {
     width: 50px;
     height: 50px;
     font-size: 30px;
@@ -113,11 +144,12 @@ main .game .count button{
     color: #ECECEC;
 }
 
-main .game .count button:disabled{
+main .game .count button:disabled {
     background-color: #434445;
     color: #818283;
 }
-main .game .count input{
+
+main .game .count input {
     border: 2px solid #303436;
     outline: none;
     border-radius: 5px;
@@ -128,20 +160,23 @@ main .game .count input{
     color: #ECECEC;
     text-align: center;
 }
-main .game .tries{
+
+main .game .tries {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 7px;
 }
-main .game .tries .row{
+
+main .game .tries .row {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 7px;
 }
-main .game .tries .row div{
+
+main .game .tries .row div {
     width: 40px;
     height: 40px;
     font-family: "Poppins", sans-serif;
@@ -153,26 +188,33 @@ main .game .tries .row div{
     justify-content: center;
     font-size: 24px;
 }
-main .game .tries .row div.wrong{
+
+main .game .tries .row div.wrong {
     background-color: #707070;
 }
-main .game .tries .row div.rightwrong{
+
+main .game .tries .row div.rightwrong {
     background-color: #DAC316;
 }
-main .game .tries .row div.right{
+
+main .game .tries .row div.right {
     background-color: #55B725;
 }
+
 @keyframes pop {
-    0%{
+    0% {
         transform: scale(1);
-    }    
-    50%{
+    }
+
+    50% {
         transform: scale(0.9);
-    }    
-    0%{
+    }
+
+    0% {
         transform: scale(1);
-    }    
+    }
 }
+
 @media screen and (max-width: 1000px) {
     header nav h1 {
         font-size: 3.5rem;
