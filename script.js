@@ -80,6 +80,13 @@ function removeBoxes() {
         rows[i].removeChild(child)
     }
 }
+function matchWord(){
+    for(i=0;i<typedWord.length;i++){
+        for(j=0;j<selectedWordArray.length;j++){
+            console.log(typedWord[i],selectedWordArray[j]);
+        }
+    }
+}
 window.addEventListener("keydown", ((e) => {
     if (e.key == "Backspace") {
         if (currKeyCount > 0) {
@@ -90,6 +97,7 @@ window.addEventListener("keydown", ((e) => {
                 letterBoxes[currKeyCount].style.animation = 'none';
                 letterBoxes[currKeyCount].offsetHeight;
                 letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
+                typedWord = typedWord.splice(rowLetters,1)
                 type.play()
             }
         } else {
@@ -113,7 +121,7 @@ window.addEventListener("keydown", ((e) => {
     } else if (e.key == "Enter") {
         if(rowLetters == num){
             matchWord()
-            // rowLetters = 0
+            rowLetters = 0
             enter.play()
         }
     }
@@ -126,6 +134,3 @@ window.addEventListener("keydown", ((e) => {
         check()
     }
 }))
-function matchWord(){
-    
-}
