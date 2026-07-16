@@ -134,3 +134,14 @@ window.addEventListener("keydown", ((e) => {
         check()
     }
 }))
+function reset(){
+    currKeyCount = 0
+    rowLetters = 0
+    for(i=0;i<letterBoxes.length;i++){
+        letterBoxes[i].innerHTML = " "
+    }
+    document.getElementById("reset").blur()
+    IncBtn.removeAttribute("disabled")
+    DecBtn.removeAttribute("disabled")
+    check()
+}
