@@ -118,8 +118,14 @@ function matchWord() {
             row.children[i].classList.add("right")
         }
         setTimeout(() => {
-            document.getElementById("filter").style.display = "block"
-            document.getElementById("solved").style.display = "flex"
+            document.getElementById("filter").style.opacity = "1"
+            document.getElementById("filter").style.visibility = "visible"
+            document.getElementById("filter").style.pointerEvents = "auto"
+            document.getElementById("solved").style.opacity = "1"
+            document.getElementById("solved").style.visibility = "visible"
+            document.getElementById("solved").style.pointerEvents = "auto"
+            document.getElementById("solved").style.transform = "translate(-50%, -50%)"
+            document.getElementById("solved").style.scale = "1"
             document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
             document.getElementById("tryNum").innerHTML = `Solved in ${currKeyCount / num} tries`
         }, 1000);
@@ -143,8 +149,14 @@ function matchWord() {
                 p.innerHTML = selectedWordArray[i]
                 parent.appendChild(p)
             }
-            document.getElementById("filter").style.display = "block"
-            document.getElementById("unsolved").style.display = "flex"
+            document.getElementById("filter").style.opacity = "1"
+            document.getElementById("filter").style.visibility = "visible"
+            document.getElementById("filter").style.pointerEvents = "auto"
+            document.getElementById("unsolved").style.opacity = "1"
+            document.getElementById("unsolved").style.visibility = "visible"
+            document.getElementById("unsolved").style.pointerEvents = "auto"
+            document.getElementById("unsolved").style.transform = "translate(-50%, -50%)"
+            document.getElementById("unsolved").style.scale = "1"
             document.getElementById("timer2").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
             clearInterval(timerID)
             sec = 0
@@ -156,8 +168,14 @@ function matchWord() {
     typedWord = []
 }
 function nextRound() {
-    document.getElementById("filter").style.display = "none"
-    document.getElementById("solved").style.display = "none"
+    document.getElementById("filter").style.opacity = "0"
+    document.getElementById("filter").style.visibility = "hidden"
+    document.getElementById("filter").style.pointerEvents = "none"
+    document.getElementById("solved").style.opacity = "0"
+    document.getElementById("solved").style.visibility = "hidden"
+    document.getElementById("solved").style.pointerEvents = "none"
+    document.getElementById("solved").style.transform = "translate(-50%, -50%)"
+    document.getElementById("solved").style.scale = "0.5"
     if (num < 6) {
         num = num + 1
         input.value = num
@@ -235,7 +253,13 @@ function reset() {
     check()
     selectRandomWord()
     console.log(selectedWordArray)
-    document.getElementById("filter").style.display = "none"
-    document.getElementById("unsolved").style.display = "none"
+    document.getElementById("filter").style.opacity = "0"
+    document.getElementById("filter").style.visibility = "hidden"
+    document.getElementById("filter").style.pointerEvents = "none"
+    document.getElementById("unsolved").style.opacity = "0"
+    document.getElementById("unsolved").style.visibility = "hidden"
+    document.getElementById("unsolved").style.pointerEvents = "none"
+    document.getElementById("unsolved").style.transform = "translate(-50%, -50%)"
+    document.getElementById("unsolved").style.scale = "0.5"
     normal()
 }

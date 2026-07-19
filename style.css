@@ -200,6 +200,7 @@ main .game .tries .row div.rightwrong {
 main .game .tries .row div.right {
     background-color: #55B725;
 }
+
 .filter{
     position: absolute;
     z-index: 100;
@@ -211,9 +212,12 @@ main .game .tries .row div.right {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
     transition: all 0.1s ease-in-out;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
-.result{
+
+.result {
     position: absolute;
     z-index: 1000;
     top: 50%;
@@ -229,19 +233,27 @@ main .game .tries .row div.right {
     padding: 20px 0;
     border-radius: 10px;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    scale: 0.5;
+    transform-origin: left top;
+    transition: all .5s ease-in-out;
 }
-.result h1{
+
+.result h1 {
     color: #ECECEC;
     font-size: 30px;
 }
-.result .word{
+
+.result .word {
     display: flex;
     flex-direction: row;
     gap: 5px;
     margin: 15px 0 20px;
 }
-.result .word p{
+
+.result .word p {
     width: 40px;
     height: 40px;
     font-family: "Poppins", sans-serif;
@@ -254,11 +266,12 @@ main .game .tries .row div.right {
     font-size: 24px;
 }
 
-.result span{
+.result span {
     color: #ECECEC;
     margin-bottom: 10px;
 }
-.result button{
+
+.result button {
     border: 2px solid #303436;
     outline: none;
     border-radius: 5px;
@@ -270,9 +283,11 @@ main .game .tries .row div.right {
     cursor: pointer;
     transition: all ease-in-out 0.2s;
 }
-.result button:hover{
+
+.result button:hover {
     background-color: #939b9f15;
 }
+
 @keyframes pop {
     0% {
         transform: scale(1);
