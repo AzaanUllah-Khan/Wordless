@@ -327,12 +327,19 @@ main .game .tries .row div.right {
     }
 
     header {
-        padding-top: 40px;
+        padding-top: 50px;
     }
 }
 
 @media screen and (max-width:450px) {
     header nav h1 {
         font-size: 2.7rem;
+    }
+    .result{
+        width: 90%;
+    }
+    .result button{
+        width: 90%;
+        margin-top: 15px;
     }
 }
