@@ -82,20 +82,15 @@
     <div class="result" id="solved">
         <h1>Puzzle Solved</h1>
         <div class="word" id="popupword"></div>
-        <span>Solved In 3 Guesses</span>
+        <span id="tryNum">Solved In 3 Guesses</span>
         <span id="timer"></span>
         <button onclick="nextRound()">Next Level</button>
     </div>
     <div class="result" id="unsolved">
         <h1>Puzzle Failed</h1>
-        <div class="word">
-            <p>P</p>
-            <p>I</p>
-            <p>T</p>
-        </div>
-        <span>6 Tries Completed</span>
-        <span>Time: 00:18</span>
-        <button>Try Again</button>
+        <div class="word" id="popupword2"></div>
+        <span id="timer2"></span>
+        <button onclick="reset()">Try Again</button>
     </div>
     <script src="script.js"></script>
 </body>

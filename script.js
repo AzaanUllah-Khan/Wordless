@@ -43,13 +43,13 @@ async function selectRandomWord() {
     }
 }
 selectRandomWord()
-function startTime(){
+function startTime() {
     timeStarted = true
     timerID = setInterval(() => {
         sec += 1
         console.log(sec);
-        if(sec>59){
-            min+=1
+        if (sec > 59) {
+            min += 1
             sec = 0
         }
     }, 1000);
@@ -100,14 +100,33 @@ function matchWord() {
     if (typedWord.join("") == selectedWordArray.join("")) {
         let parent = document.getElementById("popupword")
         parent.innerHTML = ""
-        for (i = 0; i < typedWord.length; i++) {
+        for (i = 0; i < selectedWordArray.length; i++) {
             let p = document.createElement("p")
-            p.innerHTML = typedWord[i]
+            p.innerHTML = selectedWordArray[i]
             parent.appendChild(p)
         }
         document.getElementById("filter").style.display = "block"
         document.getElementById("solved").style.display = "flex"
-        document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0"+min : min}:${sec < 10 ? "0"+sec:sec}`
+        document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
+        document.getElementById("tryNum").innerHTML = `Solved in ${currKeyCount / num} tries`
+    } else {
+        if (currKeyCount / 3 == 6) {
+            let parent = document.getElementById("popupword2")
+            parent.innerHTML = ""
+            for (i = 0; i < selectedWordArray.length; i++) {
+                let p = document.createElement("p")
+                p.innerHTML = selectedWordArray[i]
+                parent.appendChild(p)
+            }
+            document.getElementById("filter").style.display = "block"
+            document.getElementById("unsolved").style.display = "flex"
+            document.getElementById("timer2").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
+            clearInterval(timerID)
+            sec = 0
+            min = 0
+            timeStarted = false
+            currKeyCount = 0
+        }
     }
     typedWord = []
 }
@@ -124,6 +143,7 @@ function nextRound() {
         sec = 0
         min = 0
         timeStarted = false
+        currKeyCount = 0
     } else {
         window.location.reload()
     }
@@ -188,4 +208,6 @@ function reset() {
     check()
     selectRandomWord()
     console.log(selectedWordArray)
+    document.getElementById("filter").style.display = "none"
+    document.getElementById("unsolved").style.display = "none"
 }
