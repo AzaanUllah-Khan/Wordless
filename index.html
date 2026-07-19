@@ -78,17 +78,13 @@
             </div>
         </div>
     </main>
-    <div class="filter"></div>
+    <div class="filter" id="filter"></div>
     <div class="result" id="solved">
         <h1>Puzzle Solved</h1>
-        <div class="word">
-            <p>P</p>
-            <p>I</p>
-            <p>T</p>
-        </div>
+        <div class="word" id="popupword"></div>
         <span>Solved In 3 Guesses</span>
         <span>Time: 00:18</span>
-        <button>Next Level</button>
+        <button onclick="nextRound()">Next Level</button>
     </div>
     <div class="result" id="unsolved">
         <h1>Puzzle Failed</h1>

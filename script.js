@@ -32,7 +32,7 @@ async function selectRandomWord() {
         }
         word = wordBank[Math.ceil(Math.random() * wordBank.length)]
         selectedWordArray = word.split("")
-        // alert(selectedWordArray)
+        console.log(selectedWordArray)
     } catch (error) {
         console.log(error);
     }
@@ -80,11 +80,31 @@ function removeBoxes() {
         rows[i].removeChild(child)
     }
 }
-function matchWord(){
-    for(i=0;i<typedWord.length;i++){
-        for(j=0;j<selectedWordArray.length;j++){
-            console.log(typedWord[i],selectedWordArray[j]);
+function matchWord() {
+    if (typedWord.join("") == selectedWordArray.join("")) {
+        let parent = document.getElementById("popupword")
+        parent.innerHTML = ""
+        for (i = 0; i < typedWord.length; i++) {
+            let p = document.createElement("p")
+            p.innerHTML = typedWord[i]
+            parent.appendChild(p)
         }
+        document.getElementById("filter").style.display = "block"
+        document.getElementById("solved").style.display = "flex"
+    }
+    typedWord = []
+}
+function nextRound() {
+    document.getElementById("filter").style.display = "none"
+    document.getElementById("solved").style.display = "none"
+    if (num < 6) {
+        num = num + 1
+        input.value = num
+        allKeyCount = num * 6
+        addBoxes()
+        reset()
+    } else {
+        window.location.reload()
     }
 }
 window.addEventListener("keydown", ((e) => {
@@ -97,7 +117,7 @@ window.addEventListener("keydown", ((e) => {
                 letterBoxes[currKeyCount].style.animation = 'none';
                 letterBoxes[currKeyCount].offsetHeight;
                 letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
-                typedWord = typedWord.splice(rowLetters,1)
+                typedWord = typedWord.splice(rowLetters, 1)
                 type.play()
             }
         } else {
@@ -119,7 +139,7 @@ window.addEventListener("keydown", ((e) => {
             }
         }
     } else if (e.key == "Enter") {
-        if(rowLetters == num){
+        if (rowLetters == num) {
             matchWord()
             rowLetters = 0
             enter.play()
@@ -134,14 +154,16 @@ window.addEventListener("keydown", ((e) => {
         check()
     }
 }))
-function reset(){
+function reset() {
     currKeyCount = 0
     rowLetters = 0
-    for(i=0;i<letterBoxes.length;i++){
+    for (i = 0; i < letterBoxes.length; i++) {
         letterBoxes[i].innerHTML = " "
     }
     document.getElementById("reset").blur()
     IncBtn.removeAttribute("disabled")
     DecBtn.removeAttribute("disabled")
     check()
+    selectRandomWord()
+    console.log(selectedWordArray)
 }
