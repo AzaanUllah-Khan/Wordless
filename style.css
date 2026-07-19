@@ -243,7 +243,7 @@ main .game .tries .row div.right {
 
 .result h1 {
     color: #ECECEC;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .result .word {
@@ -282,6 +282,7 @@ main .game .tries .row div.right {
     text-align: center;
     cursor: pointer;
     transition: all ease-in-out 0.2s;
+    font-family: 'Poppins',sans-serif;
 }
 
 .result button:hover {
