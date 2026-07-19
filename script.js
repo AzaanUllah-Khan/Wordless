@@ -114,7 +114,7 @@ function matchWord() {
             p.innerHTML = selectedWordArray[i]
             parent.appendChild(p)
         }
-        for(i=0;i<row.children.length;i++){
+        for (i = 0; i < row.children.length; i++) {
             row.children[i].classList.add("right")
         }
         setTimeout(() => {
@@ -124,23 +124,18 @@ function matchWord() {
             document.getElementById("tryNum").innerHTML = `Solved in ${currKeyCount / num} tries`
         }, 1000);
     } else {
-            console.log(typedWord);
         for (i = 0; i < typedWord.length; i++) {
             for (j = 0; j < selectedWordArray.length; j++) {
                 if (typedWord[i] == selectedWordArray[j]) {
                     if (i == j) {
                         row.children[i].classList.add("right")
                     } else {
-                        if(row.children[i].classList.contains("right")){
-                            return
-                        }else{
-                            row.children[i].classList.add("rightwrong")
-                        }
+                        row.children[i].classList.add("rightwrong")
                     }
                 }
             }
         }
-        if (currKeyCount / 3 == 6) {
+        if (currKeyCount / num == 6) {
             let parent = document.getElementById("popupword2")
             parent.innerHTML = ""
             for (i = 0; i < selectedWordArray.length; i++) {
@@ -189,7 +184,7 @@ window.addEventListener("keydown", ((e) => {
                 letterBoxes[currKeyCount].style.animation = 'none';
                 letterBoxes[currKeyCount].offsetHeight;
                 letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
-                typedWord = typedWord.splice(rowLetters+1, 1)
+                typedWord.splice(rowLetters, 1)
                 type.play()
             }
         } else {
@@ -230,6 +225,7 @@ window.addEventListener("keydown", ((e) => {
 function reset() {
     currKeyCount = 0
     rowLetters = 0
+    typedWord = []
     for (i = 0; i < letterBoxes.length; i++) {
         letterBoxes[i].innerHTML = " "
     }
