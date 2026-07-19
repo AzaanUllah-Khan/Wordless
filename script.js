@@ -47,7 +47,6 @@ function startTime() {
     timeStarted = true
     timerID = setInterval(() => {
         sec += 1
-        console.log(sec);
         if (sec > 59) {
             min += 1
             sec = 0
@@ -96,7 +95,17 @@ function removeBoxes() {
         rows[i].removeChild(child)
     }
 }
+function normal() {
+    for (i = 0; i < letterBoxes.length; i++) {
+        if (letterBoxes[i].classList.contains("right")) {
+            letterBoxes[i].classList.remove("right")
+        } else if (letterBoxes[i].classList.contains("rightwrong")) {
+            letterBoxes[i].classList.remove("rightwrong")
+        }
+    }
+}
 function matchWord() {
+    let row = document.getElementsByClassName("row")[(currKeyCount / num) - 1]
     if (typedWord.join("") == selectedWordArray.join("")) {
         let parent = document.getElementById("popupword")
         parent.innerHTML = ""
@@ -105,11 +114,32 @@ function matchWord() {
             p.innerHTML = selectedWordArray[i]
             parent.appendChild(p)
         }
-        document.getElementById("filter").style.display = "block"
-        document.getElementById("solved").style.display = "flex"
-        document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
-        document.getElementById("tryNum").innerHTML = `Solved in ${currKeyCount / num} tries`
+        for(i=0;i<row.children.length;i++){
+            row.children[i].classList.add("right")
+        }
+        setTimeout(() => {
+            document.getElementById("filter").style.display = "block"
+            document.getElementById("solved").style.display = "flex"
+            document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`
+            document.getElementById("tryNum").innerHTML = `Solved in ${currKeyCount / num} tries`
+        }, 1000);
     } else {
+            console.log(typedWord);
+        for (i = 0; i < typedWord.length; i++) {
+            for (j = 0; j < selectedWordArray.length; j++) {
+                if (typedWord[i] == selectedWordArray[j]) {
+                    if (i == j) {
+                        row.children[i].classList.add("right")
+                    } else {
+                        if(row.children[i].classList.contains("right")){
+                            return
+                        }else{
+                            row.children[i].classList.add("rightwrong")
+                        }
+                    }
+                }
+            }
+        }
         if (currKeyCount / 3 == 6) {
             let parent = document.getElementById("popupword2")
             parent.innerHTML = ""
@@ -144,6 +174,7 @@ function nextRound() {
         min = 0
         timeStarted = false
         currKeyCount = 0
+        normal()
     } else {
         window.location.reload()
     }
@@ -158,7 +189,7 @@ window.addEventListener("keydown", ((e) => {
                 letterBoxes[currKeyCount].style.animation = 'none';
                 letterBoxes[currKeyCount].offsetHeight;
                 letterBoxes[currKeyCount].style.animation = 'pop 0.3s ease-out';
-                typedWord = typedWord.splice(rowLetters, 1)
+                typedWord = typedWord.splice(rowLetters+1, 1)
                 type.play()
             }
         } else {
@@ -210,4 +241,5 @@ function reset() {
     console.log(selectedWordArray)
     document.getElementById("filter").style.display = "none"
     document.getElementById("unsolved").style.display = "none"
+    normal()
 }
