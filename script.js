@@ -16,6 +16,11 @@ let enter = new Audio("enter.mp3")
 let type = new Audio("type.wav")
 let selectedWordArray = []
 let typedWord = []
+let min = 0
+let sec = 0
+let time = ""
+let timeStarted = false
+let timerID
 
 async function selectRandomWord() {
     try {
@@ -38,6 +43,17 @@ async function selectRandomWord() {
     }
 }
 selectRandomWord()
+function startTime(){
+    timeStarted = true
+    timerID = setInterval(() => {
+        sec += 1
+        console.log(sec);
+        if(sec>59){
+            min+=1
+            sec = 0
+        }
+    }, 1000);
+}
 function check() {
     if (num == 6) {
         IncBtn.setAttribute("disabled", true)
@@ -91,6 +107,7 @@ function matchWord() {
         }
         document.getElementById("filter").style.display = "block"
         document.getElementById("solved").style.display = "flex"
+        document.getElementById("timer").innerHTML = `Time: ${min < 10 ? "0"+min : min}:${sec < 10 ? "0"+sec:sec}`
     }
     typedWord = []
 }
@@ -103,6 +120,10 @@ function nextRound() {
         allKeyCount = num * 6
         addBoxes()
         reset()
+        clearInterval(timerID)
+        sec = 0
+        min = 0
+        timeStarted = false
     } else {
         window.location.reload()
     }
@@ -124,6 +145,7 @@ window.addEventListener("keydown", ((e) => {
             currKeyCount = 0
         }
     } else if (e.key == "a" || e.key == "b" || e.key == "c" || e.key == "d" || e.key == "e" || e.key == "f" || e.key == "g" || e.key == "h" || e.key == "i" || e.key == "j" || e.key == "k" || e.key == "l" || e.key == "m" || e.key == "n" || e.key == "o" || e.key == "p" || e.key == "q" || e.key == "r" || e.key == "s" || e.key == "t" || e.key == "u" || e.key == "v" || e.key == "w" || e.key == "x" || e.key == "y" || e.key == "z") {
+        timeStarted ? "" : startTime()
         if (currKeyCount < allKeyCount) {
             if (rowLetters < num) {
                 rowLetters = rowLetters + 1
