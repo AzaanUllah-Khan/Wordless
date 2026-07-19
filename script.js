@@ -32,7 +32,7 @@ async function selectRandomWord() {
         }
         word = wordBank[Math.ceil(Math.random() * wordBank.length)]
         selectedWordArray = word.split("")
-        alert(selectedWordArray)
+        // alert(selectedWordArray)
     } catch (error) {
         console.log(error);
     }
